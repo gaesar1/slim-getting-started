@@ -43,7 +43,9 @@ Cloud::define("sieveOfPrimes", function($params, $user) {
     }
     return $numbers;
 });
-
+Cloud::define("logTimer", function($params, $user) {
+    error_log("Log in timer");
+});
 //设计每日可以赠送的积分
 Cloud::define("resetscore", function() {
     $scores = new Query("Sev_score");
