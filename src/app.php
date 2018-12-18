@@ -63,11 +63,11 @@ $app->get('/todos', function(Request $request, Response $response) {
 });
 
 $app->post("/todos", function(Request $request, Response $response) {
-    $data = $request->getParsedBody();
-    $todo = new LeanObject("Todo");
-    $todo->set("content", $data["content"]);
-    $todo->save();
-    return $response->withStatus(302)->withHeader("Location", "/todos");
+   // $data = $request->getParsedBody();
+    //$todo = new LeanObject("Todo");
+   // $todo->set("content", $data["content"]);
+    //$todo->save();
+    //return $response->withStatus(302)->withHeader("Location", "/todos");
 });
 
 $app->get('/hello/{name}', function (Request $request, Response $response) {
