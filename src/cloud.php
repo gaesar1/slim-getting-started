@@ -1,6 +1,10 @@
 <?php
 
 use \LeanCloud\Engine\Cloud;
+use \LeanCloud\LeanObject;
+use \LeanCloud\Query;
+use \LeanCloud\CloudException;
+use \LeanCloud\User;
 
 /*
  * Define cloud functions and hooks on LeanCloud
@@ -40,6 +44,27 @@ Cloud::define("sieveOfPrimes", function($params, $user) {
     return $numbers;
 });
 
+//设计每日可以赠送的积分
+Cloud::define("resetscore", function() {
+    $scores = new Query("Sev_score");
+    $scores = $scores->find();
+    $repus = new Query("Sev_repu");
+    $repus = $repus->find();
+    forEach ($scores as $score) {
+        $score->set("donate", 10);
+    }
+    forEach ($repus  as $repu) {
+        $repu->set("donate", 10);
+    }
+    $reset = array($repus, $scores);
+    try {
+        LeanObject::saveAll($reset);
+        // 保存成功
+    } catch (CloudException $ex) {
+        // 保存失败
+    }
+
+});
 /*
 
 Cloud::onLogin(function($user) {
