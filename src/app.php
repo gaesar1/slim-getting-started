@@ -30,6 +30,7 @@ Client::initialize(
 // 将 sessionToken 持久化到 cookie 中，以支持多实例共享会话
 Client::setStorage(new CookieStorage());
 Client::useProduction((getenv("LEANCLOUD_APP_ENV") === "production") ? true : false);
+Client::useMasterKey(true);
 
 SlimEngine::enableHttpsRedirect();
 $app->add(new SlimEngine());
