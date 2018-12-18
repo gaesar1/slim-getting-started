@@ -63,7 +63,7 @@ Cloud::define("resetscore", function() {
         error_log("hello world04");
         // 保存成功
     } catch (CloudException $ex) {
-         error_log("hello world05");
+         error_log($ex);
         // 保存失败
     }
    error_log("hello world");
