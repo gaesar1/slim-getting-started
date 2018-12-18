@@ -48,6 +48,23 @@ Cloud::define("logTimer", function($params, $user) {
 });
 //设计每日可以赠送的积分
 Cloud::define("resetscore", function() {
+    error_log("hello world01");
+        $scores = new Query("Sev_score");
+       $scores = $scores->find();
+     error_log("hello world02");
+      forEach ($scores as $score) {
+           error_log("hello world03");
+        $score->set("donate", 10);
+    }
+
+    try {
+         error_log("hello world04");
+        LeanObject::saveAll($scores);
+        // 保存成功
+    } catch (CloudException $ex) {
+         error_log("hello world05");
+        // 保存失败
+    }
    error_log("hello world");
 
 });
