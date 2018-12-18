@@ -58,8 +58,9 @@ Cloud::define("resetscore", function() {
     }
 
     try {
-         error_log("hello world04");
+         
         LeanObject::saveAll($scores);
+        error_log("hello world04");
         // 保存成功
     } catch (CloudException $ex) {
          error_log("hello world05");
