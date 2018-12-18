@@ -58,9 +58,10 @@ Cloud::define("resetscore", function() {
     forEach ($repus  as $repu) {
         $repu->set("donate", 12);
     }
-    $resetall=array($scores,$repus);
+//     $resetall=array($scores,$repus);
     try {
-        LeanObject::saveAll($resetall);
+        LeanObject::saveAll($scores);
+        LeanObject::saveAll($repus);
         // 保存成功
     } catch (CloudException $ex) {
         error_log($ex);
