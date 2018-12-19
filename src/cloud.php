@@ -69,7 +69,7 @@ Cloud::define("resetscore", function() {
 
 });
 Cloud::define("averageStars", function($params, $user) {
-error_log("执行averageStars");
+return "hello leancloud";
 });
 
 
