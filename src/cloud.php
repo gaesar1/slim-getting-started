@@ -48,7 +48,8 @@ Cloud::define("logTimer", function($params, $user) {
 });
 //设计每日可以赠送的积分
 Cloud::define("resetscore", function() {
-    $scores = new Query("Sev_score");
+    error_log("resetscore执行成功");
+   /* $scores = new Query("Sev_score");
     $scores = $scores->find();
     $repus = new Query("Sev_repu");
     $repus = $repus->find();
@@ -66,7 +67,7 @@ Cloud::define("resetscore", function() {
     } catch (CloudException $ex) {
         error_log("执行失败：".$ex);
     }
-
+*/
 });
 Cloud::define("averageStars", function($params) {
 return "hello leancloud";
