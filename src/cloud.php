@@ -70,7 +70,7 @@ Cloud::define("resetscore", function() {
 
 });
 Cloud::define("averageStars", function($params) {
-return "hello leancloud";
+return $params;
 });
 
 
