@@ -71,7 +71,8 @@ Cloud::define("resetscore", function() {
 
 });
 Cloud::define("averageStars", function($params) {
-return $params;
+    error_log("resetscore开始执行");
+   return $params;
 });
 
 
