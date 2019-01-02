@@ -49,6 +49,7 @@ Cloud::define("logTimer", function($params, $user) {
 //设计每日可以赠送的积分
 Cloud::define("resetscore", function() {
     error_log("resetscore开始执行");
+    return 123;
     $scores = new Query("Sev_score");
     $scores = $scores->find();
     $repus = new Query("Sev_repu");
