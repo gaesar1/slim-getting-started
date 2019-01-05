@@ -70,8 +70,10 @@ Cloud::define("resetscore", function() {
 
 });
 Cloud::define("views", function($params) {
-    error_log("resetscore开始执行");
-   return $params;
+    error_log("views开始执行");
+    $obj=$params[obj];
+    $id=$obj->getObjectId();
+    return $id;
 });
 
 
