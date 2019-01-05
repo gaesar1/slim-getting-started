@@ -76,7 +76,8 @@ Cloud::define("views", function($params) {
     $topic  = $query->get($id);
     $topic->increment("lookNum", 1);
     $topic->save();
-    return $id;
+    $num=$topic->get("lookNum");
+    return $num;
 });
 
 
