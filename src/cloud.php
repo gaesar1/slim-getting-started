@@ -71,8 +71,11 @@ Cloud::define("resetscore", function() {
 });
 Cloud::define("views", function($params) {
     error_log("views开始执行");
-    $obj=$params['obj'];
-    $id=$obj->getObjectId();
+    $id=$params['id'];
+    $query = new Query("Sev_topics");
+    $topic  = $query->get($id);
+    $topic->increment("lookNum", 1);
+    $topic->save();
     return $id;
 });
 
