@@ -431,3 +431,37 @@ function addArray()
         echo $ex;
     }
 }
+//计数操作函数
+function numOplean(LeanObject $record, $field, $num)
+{
+    $Threshold = $record->get("Threshold");
+    if ($Threshold > 0) {
+        $record->increment($field, $num);
+        $record->increment("Threshold", -$num);
+        try {
+            $record->save();
+        } catch (CloudException $ex) {
+            echo $ex;
+        }
+    }
+}
+//
+//判断query是否为空 创建或者返回Object对象，创建对象时可以设定$fieldsMap内为初始值
+function getRecordlean(Query $query, $class, $fieldsMap = array())
+{
+    if ($query->count() == 0) {
+        $record = new LeanObject($class);
+        foreach ($fieldsMap as $key => $val) {
+            $record->set($key, $val);
+        }
+
+    } else {
+        try {
+            $record = $query->first();
+
+        } catch (CloudException $ex) {
+            echo $ex;
+        }
+    }
+    return $record;
+}
