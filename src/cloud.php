@@ -100,7 +100,7 @@ Cloud::define("opRepu", function($params) {
 Cloud::define("opScore", function($params) {
     error_log("opScore开始执行");
     $UserId=$params['UserId'];
-    $repu=intval($params['repu']);
+    $score=intval($params['score']);
     $user=queryObjectByid($UserId,"_User");
     $queryMap = array("user" => $user);
     //查找记录
@@ -117,7 +117,7 @@ Cloud::define("opScore", function($params) {
 Cloud::define("opWealth", function($params) {
     error_log("opWealth开始执行");
     $UserId=$params['UserId'];
-    $repu=intval($params['repu']);
+    $wealth=intval($params['wealth']);
     $user=queryObjectByid($UserId,"_User");
     $queryMap = array("user" => $user);
     //查找记录
