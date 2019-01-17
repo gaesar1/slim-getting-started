@@ -84,7 +84,7 @@ Cloud::define("opRepu", function($params) {
     error_log("opRepu开始执行");
     $UserId=$params['UserId'];
     $repu=intval($params['repu']);
-    $user=queryUserByid($UserId);
+    $user=queryObjectByid($UserId,"_User");
     $queryMap = array("user" => $user);
     //查找记录
     $queryrepu = queryObject("Sev_repu", $queryMap);
