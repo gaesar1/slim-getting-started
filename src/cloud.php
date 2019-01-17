@@ -80,7 +80,23 @@ Cloud::define("views", function($params) {
     $num=$topic->get("lookNum");
     return $num;
 });
+Cloud::define("opRepu", function($params) {
+    error_log("opRepu开始执行");
+    $UserId=$params['UserId'];
+    $repu=$params['repu'];
+    $user=queryUserByid($UserId);
+    $queryMap = array("user" => $user);
+    //查找记录
+    $queryrepu = queryObject("Sev_repu", $queryMap);
+    //获得记录
+    $setMap = array("user" => $user, "Threshold" => 200);
 
+    $record = getRecordlean($queryrepu, "Sev_repu", $setMap);;
+    //计数操作
+    numOpLean($record, "repu", $repu);
+    error_log("opRepu执行完毕");
+
+});
 
 /*
 
