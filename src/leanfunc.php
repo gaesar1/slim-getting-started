@@ -441,6 +441,7 @@ function numOplean(LeanObject $record, $field, $num)
         $record->increment("Threshold", -$num);
         try {
             $record->save();
+            error_log("numOplean执行成功".$num);
         } catch (CloudException $ex) {
             echo $ex;
         }
