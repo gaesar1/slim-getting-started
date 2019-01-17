@@ -436,6 +436,7 @@ function numOplean(LeanObject $record, $field, $num)
 {
     $Threshold = $record->get("Threshold");
     if ($Threshold > 0) {
+        error_log("numOplean执行".$num);
         $record->increment($field, $num);
         $record->increment("Threshold", -$num);
         try {
@@ -448,14 +449,16 @@ function numOplean(LeanObject $record, $field, $num)
 //
 //判断query是否为空 创建或者返回Object对象，创建对象时可以设定$fieldsMap内为初始值
 function getRecordlean(Query $query, $class, $fieldsMap = array())
-{
+{error_log("getRecordlean执行");
     if ($query->count() == 0) {
+        error_log("getRecordlean执行2");
         $record = new LeanObject($class);
         foreach ($fieldsMap as $key => $val) {
             $record->set($key, $val);
         }
 
     } else {
+        error_log("getRecordlean执行1");
         try {
             $record = $query->first();
 
