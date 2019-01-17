@@ -5,6 +5,7 @@ use \LeanCloud\LeanObject;
 use \LeanCloud\Query;
 use \LeanCloud\CloudException;
 use \LeanCloud\User;
+require 'leanfunc.php';
 
 /*
  * Define cloud functions and hooks on LeanCloud
