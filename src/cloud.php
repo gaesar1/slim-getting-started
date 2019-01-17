@@ -83,7 +83,7 @@ Cloud::define("views", function($params) {
 Cloud::define("opRepu", function($params) {
     error_log("opRepu开始执行");
     $UserId=$params['UserId'];
-    $repu=$params['repu'];
+    $repu=intval($params['repu']);
     $user=queryUserByid($UserId);
     $queryMap = array("user" => $user);
     //查找记录
