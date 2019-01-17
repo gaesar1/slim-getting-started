@@ -97,6 +97,40 @@ Cloud::define("opRepu", function($params) {
     error_log("opRepu执行完毕");
 
 });
+Cloud::define("opScore", function($params) {
+    error_log("opScore开始执行");
+    $UserId=$params['UserId'];
+    $repu=intval($params['repu']);
+    $user=queryObjectByid($UserId,"_User");
+    $queryMap = array("user" => $user);
+    //查找记录
+    $queryrepu = queryObject("Sev_score", $queryMap);
+    //获得记录
+    $setMap = array("user" => $user, "Threshold" => 500);
+
+    $record = getRecordlean($queryrepu, "Sev_score", $setMap);;
+    //计数操作
+    numOpLean($record, "score", $score);
+    error_log("opScore执行完毕");
+
+});
+Cloud::define("opWealth", function($params) {
+    error_log("opWealth开始执行");
+    $UserId=$params['UserId'];
+    $repu=intval($params['repu']);
+    $user=queryObjectByid($UserId,"_User");
+    $queryMap = array("user" => $user);
+    //查找记录
+    $queryrepu = queryObject("Sev_wealth", $queryMap);
+    //获得记录
+    $setMap = array("user" => $user, "Threshold" => 10);
+
+    $record = getRecordlean($queryrepu, "Sev_wealth", $setMap);;
+    //计数操作
+    numOpLean($record, "wealth", $wealth);
+    error_log("opWealth执行完毕");
+
+});
 
 /*
 
