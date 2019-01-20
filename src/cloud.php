@@ -131,6 +131,20 @@ Cloud::define("opWealth", function($params) {
     error_log("opWealth执行完毕");
 
 });
+// 增加计数
+Cloud::define("increase", function($params) {
+    error_log("increase开始执行");
+    $id=$params['id'];
+    $num=intval($params['num']);
+    $key=$params['key'];
+    $class=$params['class'];
+    $query = new Query($class);
+    $obj  = $query->get($id);
+    $obj->increment($key, $num);
+    $obj->save();
+    $num=$obj->get($key);
+    return $num;
+});
 
 /*
 
